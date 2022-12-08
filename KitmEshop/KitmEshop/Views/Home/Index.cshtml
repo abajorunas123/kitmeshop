@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Kitm Eshop</h1>
+</div>
+<div class="res"></div>
+
+<script>
+    (function () {
+        $.get("api/products", function (data) {
+            const result = JSON.parse(JSON.stringify(data))
+            for (var i = 0; i < result.length; i++) {
+                $(".res").append('<ul><li><img src="' + result[i].image + '"/></li><li>' + result[i].name + '</li><li>' + result[i].price + '</li></ul> <a href="Review/add/' + result[i].id +'">Write a review</a>')
+            }
+        });
+    })();
+
+</script>
